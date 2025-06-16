@@ -21,7 +21,7 @@ class FilterButton extends StatelessWidget {
         onPressed: onTap,
         style: ElevatedButton.styleFrom(
           elevation: 0,
-          backgroundColor: isSelected ? const Color(0xFF47C6AD) : Colors.grey[200],
+          backgroundColor: isSelected ? Theme.of(context).colorScheme.onPrimary : Theme.of(context).colorScheme.primary,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20.r),
           ),
@@ -31,7 +31,7 @@ class FilterButton extends StatelessWidget {
           text,
           style: TextStyle(
             fontSize: 14.sp,
-            color: isSelected ? Colors.white : Colors.black54,
+            color: isSelected ? Theme.of(context).colorScheme.primary : Theme.of(context).colorScheme.onPrimary,
             fontWeight: FontWeight.w500,
           ),
         ),

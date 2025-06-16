@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../widgets/custom_button.dart';
 import '../widgets/custom_text_field.dart';
 import 'forgot_password_screen.dart';
-import 'home_screen.dart';
+import 'nav_main_screen.dart';
 import 'signup_screen.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -68,7 +68,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 CustomButton(
                   text: 'Login',
                   onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=> const HomeScreen()));
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=> const MainScreen()));
                   },
                 ),
                 SizedBox(height: 90.h), // নিচে স্পেস দেওয়ার জন্য

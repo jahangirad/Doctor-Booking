@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../widgets/doctor_card.dart';
 import '../widgets/filter_button.dart';
+import 'doctor_info_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -11,12 +12,10 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  int _selectedFilterIndex = 1;
-  int _bottomNavIndex = 0;
+  int _selectedFilterIndex = 0;
 
   final List<String> filters = ["All", "Cardiologist", "Dermatologist", "Neurologist"];
 
-  // ডেমো ডেটা, এখন মডেল ছাড়া সরাসরি ম্যাপ লিস্ট হিসেবে
   final List<Map<String, String>> doctors = [
     {
       'name': 'Dr. Ethan Carter',
@@ -26,13 +25,13 @@ class _HomeScreenState extends State<HomeScreen> {
     },
     {
       'name': 'Dr. Olivia Bennett',
-      'specialty': 'Cardiologist',
+      'specialty': 'Dermatologist', // Changed for filtering example
       'address': '456 Oak Ave, Anytown',
       'imageUrl': 'assets/img/splash-icon.png',
     },
     {
       'name': 'Dr. Noah Thompson',
-      'specialty': 'Cardiologist',
+      'specialty': 'Neurologist', // Changed for filtering example
       'address': '789 Pine Ln, Anytown',
       'imageUrl': 'assets/img/splash-icon.png',
     },
@@ -40,11 +39,11 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    // Scaffold এখন HomeScreen এর অংশ, যা ঠিক আছে।
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.background,
         elevation: 0,
-        leading: Icon(Icons.arrow_back, color: Theme.of(context).colorScheme.secondary, size: 24.sp),
         title: Text(
           'Find a doctor',
           style: TextStyle(
@@ -54,6 +53,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
         centerTitle: true,
+        automaticallyImplyLeading: false,
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -97,10 +97,11 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               SizedBox(height: 24.h),
               Text(
-                'Cardiologist',
+                'All Doctors',
                 style: TextStyle(
                   fontSize: 24.sp,
                   fontWeight: FontWeight.bold,
+                  color: Theme.of(context).colorScheme.secondary,
                 ),
               ),
               SizedBox(height: 16.h),
@@ -110,60 +111,23 @@ class _HomeScreenState extends State<HomeScreen> {
                 itemCount: doctors.length,
                 itemBuilder: (context, index) {
                   final doctor = doctors[index];
-                  return DoctorCard(
-                    name: doctor['name']!,
-                    specialty: doctor['specialty']!,
-                    address: doctor['address']!,
-                    imageUrl: doctor['imageUrl']!,
+                  // DoctorCard-এ onTap যোগ করে DoctorInfoScreen-এ নেভিগেট করা হয়েছে
+                  return GestureDetector(
+                    onTap: (){
+                      //Navigator.push(context, MaterialPageRoute(builder: (context)=>DoctorInfoScreen(doctor: doctor)));
+                    },
+                    child: DoctorCard(
+                      name: doctor['name']!,
+                      specialty: doctor['specialty']!,
+                      address: doctor['address']!,
+                      imageUrl: doctor['imageUrl']!,
+                    ),
                   );
                 },
               ),
             ],
           ),
         ),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _bottomNavIndex,
-        onTap: (index) {
-          setState(() {
-            _bottomNavIndex = index;
-          });
-        },
-        type: BottomNavigationBarType.fixed,
-        selectedItemColor: const Color(0xFF47C6AD),
-        unselectedItemColor: Colors.grey[400],
-        selectedLabelStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 12.sp),
-        unselectedLabelStyle: TextStyle(fontSize: 12.sp),
-        items: [
-          const BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(
-            icon: Stack(
-              children: [
-                const Icon(Icons.calendar_today),
-                Positioned(
-                  right: 0,
-                  top: 0,
-                  child: Container(
-                    padding: const EdgeInsets.all(1),
-                    decoration: BoxDecoration(
-                      color: Colors.red,
-                      borderRadius: BorderRadius.circular(6),
-                    ),
-                    constraints: const BoxConstraints(minWidth: 12, minHeight: 12),
-                    child: Text(
-                      '12',
-                      style: TextStyle(color: Colors.white, fontSize: 8.sp),
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                )
-              ],
-            ),
-            label: 'Appointments',
-          ),
-          const BottomNavigationBarItem(icon: Icon(Icons.chat_bubble_outline), label: 'Messages'),
-          const BottomNavigationBarItem(icon: Icon(Icons.person_outline), label: 'Profile'),
-        ],
       ),
     );
   }
