@@ -12,8 +12,6 @@ class AppointmentsScreen extends StatefulWidget {
 }
 
 class _AppointmentsScreenState extends State<AppointmentsScreen> {
-  int _selectedIndex = 1;
-
   // ডেটা এখন List of Maps হিসেবে আছে, কোনো মডেল ক্লাস নেই।
   final List<Map<String, String>> appointmentsList = [
     {
