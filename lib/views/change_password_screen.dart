@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
+import '../controllers/auth_controller.dart';
 import '../widgets/custom_button.dart';
 import '../widgets/custom_text_field.dart';
 
@@ -12,6 +14,7 @@ class ChangePasswordScreen extends StatelessWidget {
   final currentPassword = TextEditingController();
   final newPassword = TextEditingController();
   final confirmPassword = TextEditingController();
+  final AuthController authController = Get.put(AuthController());
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +60,10 @@ class ChangePasswordScreen extends StatelessWidget {
                 child: CustomButton(
                   text: 'Update Password',
                   onPressed: () {
-                    //Navigator.push(context, MaterialPageRoute(builder: (context)=> const MainScreen()));
+                    authController.changePasswordSecurely(currentPassword.text.trim(), newPassword.text.trim());
+                    currentPassword.clear();
+                    newPassword.clear();
+                    confirmPassword.clear();
                   },
                 ),
               ),

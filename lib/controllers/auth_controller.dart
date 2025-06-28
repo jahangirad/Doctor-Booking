@@ -195,4 +195,34 @@ class AuthController extends GetxController {
       isLoading.value = false;
     }
   }
+
+  Future<void> changePasswordSecurely(String currentPassword, String newPassword) async {
+    try {
+      final user = supabase.auth.currentUser;
+
+      if (user == null || user.email == null) {
+        throw Exception('User not logged in');
+      }
+
+      // Step 1: Verify current password
+      await supabase.auth.signInWithPassword(
+        email: user.email!,
+        password: currentPassword,
+      );
+
+      // Step 2: Update password
+      final response = await supabase.auth.updateUser(
+        UserAttributes(password: newPassword.trim()),
+      );
+
+      if (response.user != null) {
+        Get.snackbar('Success', 'Password changed successfully.');
+      } else {
+        throw Exception('Failed to update password.');
+      }
+
+    } catch (e) {
+      Get.snackbar('Error', e.toString());
+    }
+  }
 }
