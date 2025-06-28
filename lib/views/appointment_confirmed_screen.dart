@@ -99,7 +99,7 @@ class _AppointmentConfirmedScreenState extends State<AppointmentConfirmedScreen>
               CustomButton(
                 text: 'Done',
                 onPressed: () {
-                  Get.offAll(() => const HomeScreen());
+                  Get.toNamed('/main-screen');
                 },
               ),
             ],

@@ -1,7 +1,8 @@
-import 'package:doctor_booking/views/reset_password_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
+import '../controllers/auth_controller.dart';
 import '../widgets/custom_button.dart';
 import '../widgets/custom_text_field.dart';
 
@@ -16,6 +17,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
   // এই state টি ট্র্যাক করবে যে রিসেট লিঙ্ক পাঠানো হয়েছে কিনা
   bool _isLinkSent = false;
   final email = TextEditingController();
+  final AuthController _authController = Get.put(AuthController());
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +65,8 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
               CustomButton(
                 text: 'Send Reset Link',
                 onPressed: (){
-
+                  _authController.sendPasswordResetEmail(email.text.trim());
+                  email.clear();
                 },
               ),
               const Spacer(), // বাকি সব খালি জায়গা নিয়ে নিবে

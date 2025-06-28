@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
+import '../controllers/auth_controller.dart';
 import '../widgets/custom_button.dart';
 import '../widgets/custom_text_field.dart';
 import '../widgets/password_strength_indicator.dart'; // your_app_name পরিবর্তন করুন
@@ -16,6 +18,9 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
   bool _isPasswordUpdated = false;
   double _passwordStrength = 0.0;
   String _strengthText = '';
+  final AuthController _authController = Get.put(AuthController());
+  final password = TextEditingController();
+  final confirmPassword = TextEditingController();
 
   void _checkPasswordStrength(String password) {
     setState(() {
@@ -32,14 +37,6 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
         _passwordStrength = 1.0;
         _strengthText = 'Strong';
       }
-    });
-  }
-
-  void _updatePassword() {
-    // এখানে পাসওয়ার্ড আপডেটের আসল লজিক থাকবে
-    // সফলভাবে আপডেট হলে নিচের স্টেট পরিবর্তন হবে
-    setState(() {
-      _isPasswordUpdated = true;
     });
   }
 
@@ -71,6 +68,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
             children: [
               SizedBox(height: 30.h),
               CustomTextField3(
+                controller: password,
                 hintText: 'New Password',
                 isPassword: true,
                 onChanged: _checkPasswordStrength,
@@ -82,14 +80,18 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                   strengthText: _strengthText,
                 ),
               SizedBox(height: 20.h),
-              const CustomTextField3(
+              CustomTextField3(
+                controller: confirmPassword,
                 hintText: 'Confirm New Password',
                 isPassword: true,
               ),
               const Spacer(), // বাটন এবং মেসেজকে নিচে ঠেলে দেয়
               CustomButton(
                 text: 'Update Password',
-                onPressed: _updatePassword,
+                onPressed: (){
+                  _authController.updatePassword(password.text.trim());
+                  password.clear();
+                },
               ),
               SizedBox(height: 16.h),
               if (_isPasswordUpdated)
