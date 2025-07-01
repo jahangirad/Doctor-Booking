@@ -21,7 +21,7 @@ class DoctorListItem extends StatelessWidget {
         children: [
           CircleAvatar(
             radius: 28.r,
-            backgroundImage: AssetImage(imageUrl),
+            backgroundImage: NetworkImage(imageUrl),
           ),
           SizedBox(width: 16.w),
           Column(
