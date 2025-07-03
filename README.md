@@ -28,7 +28,7 @@ The **Doctor Booking App** is a comprehensive healthcare solution built with Flu
 ### 🏠 Home & Doctor Information
 | Home Page | Doctor Info | Doctor Details |
 |-----------|-------------|----------------|
-| ![Home](https://github.com/jahangirad/Doctor-Booking/blob/main/img/Screenshot_2025-07-03-15-12-58-974_com.doctorbookingapp.doctor_booking.jpg) | ![Doctor Info](https://github.com/jahangirad/Doctor-Booking/blob/main/img/Screenshot_2025-07-03-15-13-22-189_com.doctorbookingapp.doctor_booking.jpg) | ![Doctor Details](https://github.com/jahangirad/Doctor-Booking/blob/main/img/Screenshot_2025-07-03-15-16-36-640_com.doctorbookingapp.doctor_booking.jpg) |
+| ![Home](https://github.com/jahangirad/Doctor-Booking/blob/main/img/Screenshot_2025-07-03-15-12-58-974_com.doctorbookingapp.doctor_booking.jpg) | ![Doctor Info](https://github.com/jahangirad/Doctor-Booking/blob/main/img/Screenshot_2025-07-03-15-13-22-189_com.doctorbookingapp.doctor_booking.jpg) | ![Doctor Details 1](https://github.com/jahangirad/Doctor-Booking/blob/main/img/IMG_20250703_151900.jpg) |
 
 ---
 
@@ -49,11 +49,18 @@ The **Doctor Booking App** is a comprehensive healthcare solution built with Flu
 ### ⚙️ Admin Dashboard
 | Admin Home | Doctor Management | Bookings View |
 |------------|-------------------|---------------|
-| ![Admin](https://github.com/jahangirad/Doctor-Booking/blob/main/img/Screenshot_2025-07-03-15-16-02-304_com.doctorbookingapp.doctor_booking.jpg) | ![Edit Doctor](https://github.com/jahangirad/Doctor-Booking/blob/main/img/Screenshot_2025-07-03-15-16-13-614_com.doctorbookingapp.doctor_booking.jpg) | ![Bookings](https://github.com/jahangirad/Doctor-Booking/blob/main/img/Screenshot_2025-07-03-15-17-04-056_com.doctorbookingapp.doctor_booking.jpg) |
+| ![Admin](https://github.com/jahangirad/Doctor-Booking/blob/main/img/Screenshot_2025-07-03-15-16-02-304_com.doctorbookingapp.doctor_booking.jpg) | ![Edit Doctor](https://github.com/jahangirad/Doctor-Booking/blob/main/img/Screenshot_2025-07-03-15-16-56-673_com.doctorbookingapp.doctor_booking.jpg) | ![Bookings](https://github.com/jahangirad/Doctor-Booking/blob/main/img/Screenshot_2025-07-03-15-17-04-056_com.doctorbookingapp.doctor_booking.jpg) |
 
 ---
 
-## 🛠 Installation & Setup
+### 🩺 Additional Doctor Views
+| Doctor Details 2 | Doctor Add/Edit |
+|------------------|-----------------|
+| ![Doctor Details 2](https://github.com/jahangirad/Doctor-Booking/blob/main/img/Screenshot_2025-07-03-15-16-36-640_com.doctorbookingapp.doctor_booking.jpg) | ![Doctor Edit](https://github.com/jahangirad/Doctor-Booking/blob/main/img/Screenshot_2025-07-03-15-16-13-614_com.doctorbookingapp.doctor_booking.jpg) |
+
+---
+
+## 🛠 Getting Started
 
 1. **Clone the repository**
    ```bash
